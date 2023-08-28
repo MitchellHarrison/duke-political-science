@@ -1,6 +1,12 @@
- *.fdb_latexmk
- *.fls
- *.log
- *.pdf
- *.gz
- *.toc
+*.DS_Store
+*.pdf
+*.aux
+*.fls
+*.log
+*.toc
+*.fdb_latexmk
+*.synctex.gz
+
+.Rproj.user
+
+*/Homework/*

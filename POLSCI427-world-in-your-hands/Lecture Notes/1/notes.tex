@@ -1,0 +1,114 @@
+\documentclass[titlepage, 12pt, leqno]{article}
+
+% -------------------------------------------------- %
+% -------------------- PACKAGES -------------------- %
+% -------------------------------------------------- %
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{mathtools}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{bbm}
+\usepackage[margin = 1in]{geometry}
+\tcbuselibrary{breakable}
+\tcbset{breakable = true}
+
+
+% -------------------------------------------------- %
+% -------------- CUSTOM ENVIRONMENTS --------------- %
+% -------------------------------------------------- %
+\newtcolorbox{note}{colback=black!5!white,
+                          colframe=black!55!white,
+                          fonttitle=\bfseries,title=Note}
+
+\newtcolorbox{ex}{colback=blue!5!white,
+                          colframe=blue!55!white,
+                          fonttitle=\bfseries,title=Example}
+
+\newtcolorbox{definition}{colback=red!5!white,
+                          colframe=red!55!white,
+                          fonttitle=\bfseries,title=Definition}
+
+
+% -------------------------------------------------- %
+% ------------------- COMMANDS --------------------- %
+% -------------------------------------------------- %
+% Brackets, braces, etc. 
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\bigabs}[1]{\Bigl \lvert #1 \Bigr \rvert}
+\newcommand{\bigbracket}[1]{\Bigl [ #1 \Bigr ]}
+\newcommand{\bigparen}[1]{\Bigl ( #1 \Bigr )}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\bignorm}[1]{\Bigl \| #1 \Bigr \| #1}
+\newcommand{\inner}[1]{\langle #1 \rangle}
+\newcommand{\set}[1]{{ #1 }}
+
+
+% -------------------------------------------------- %
+% -------------------- SETUP ----------------------- %
+% -------------------------------------------------- %
+\title{\Huge{Lecture 1 - Introductions}}
+\author{\large{Mitch Harrison}}
+\date{\today}   
+\begin{document}
+\setlength{\parskip}{1\baselineskip}
+\setlength{\parindent}{15pt}
+\maketitle
+\tableofcontents
+\newpage
+
+
+% -------------------------------------------------- %
+% --------------------- BODY ----------------------- %
+% -------------------------------------------------- %
+\section{Course Information}
+\subsection{Overview}
+This is a pseudo-Capstone course, with only roughly $\frac{1}{3}$ of the course
+comprising of lectures and introductions to Python and the remaining will be
+guidance for the final project. Research questions will be formulated with the
+group.
+
+\begin{note}
+    \textbf{Example research topics:}
+    \begin{itemize}
+        \item climate and conflict/migration
+        \item election outcomes
+        \item policy outcomes
+    \end{itemize}
+\end{note}
+
+
+The middle portion of the course will be dedicated to group project work, and
+the end will be another research project without working with the group. There
+will be two short problem sets early in the course. One will involve Python
+programming and the other will be progress towards research questions.
+
+\subsection{Course substance}
+Game theory is prone to errors caused by formality. In the real world, human
+actors don't always make the optimal decision. Instead of formal mathematical
+systems, we turn to programatic simulations that are programmed to include 
+approximations of these human heuristics. This course attempts to bridge the gap
+between these practices by formalizing these computational models.
+
+\begin{definition}
+    \begin{itemize}
+        \item \textbf{Actors} can be nations, political parties, individuals, or
+            others.
+        \item \textbf{Behavioral Rules} are ways that actors respond to changes 
+            in their environment.
+    \end{itemize}
+\end{definition}
+
+Research projects will require any number of actors and behavioral rules, but
+there will be \textit{exactly} one dependent variable and \textit{at least} one
+independent variable that changes as the simulation progresses. We will minimize
+the complexity of our simulations for the sake of explanation and ability to
+answer the \textit{why} questions that we are exploring.
+
+\end{document}
