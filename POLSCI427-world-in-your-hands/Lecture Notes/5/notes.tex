@@ -1,0 +1,145 @@
+\documentclass[titlepage, 12pt, leqno]{article}
+
+% -------------------------------------------------- %
+% -------------------- PACKAGES -------------------- %
+% -------------------------------------------------- %
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{mathtools}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{bbm}
+\usepackage[margin = 1in]{geometry}
+\tcbuselibrary{breakable}
+\tcbset{breakable = true}
+
+
+% -------------------------------------------------- %
+% -------------- CUSTOM ENVIRONMENTS --------------- %
+% -------------------------------------------------- %
+\newtcolorbox{note}{colback=black!5!white,
+                          colframe=black!55!white,
+                          fonttitle=\bfseries,title=Note}
+
+\newtcolorbox{ex}{colback=blue!5!white,
+                          colframe=blue!55!white,
+                          fonttitle=\bfseries,title=Example}
+
+\newtcolorbox{definition}{colback=red!5!white,
+                          colframe=red!55!white,
+                          fonttitle=\bfseries,title=Definition}
+
+
+% -------------------------------------------------- %
+% ------------------- COMMANDS --------------------- %
+% -------------------------------------------------- %
+% Brackets, braces, etc. 
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\bigabs}[1]{\Bigl \lvert #1 \Bigr \rvert}
+\newcommand{\bigbracket}[1]{\Bigl [ #1 \Bigr ]}
+\newcommand{\bigparen}[1]{\Bigl ( #1 \Bigr )}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\bignorm}[1]{\Bigl \| #1 \Bigr \| #1}
+\newcommand{\inner}[1]{\langle #1 \rangle}
+\newcommand{\set}[1]{{ #1 }}
+
+
+% -------------------------------------------------- %
+% -------------------- SETUP ----------------------- %
+% -------------------------------------------------- %
+\title{\Huge{Lecture 5 - Deductive Computational Modelling}}
+\author{\large{Mitch Harrison}}
+\date{\today}   
+\begin{document}
+\setlength{\parskip}{1\baselineskip}
+\setlength{\parindent}{15pt}
+\maketitle
+\tableofcontents
+\newpage
+
+
+% -------------------------------------------------- %
+% --------------------- BODY ----------------------- %
+% -------------------------------------------------- %
+\section{Deductive Modelling}
+
+\subsection{Periods, Steady State, and Batch Runs}
+
+\begin{definition}
+    A \textbf{period} is a single iteration of a single run of a simulation.
+\end{definition}
+
+\begin{definition}
+    A \textbf{steady state} occurs in a simulation when the system "settles" into
+    a state that ceases to evolve (at least ceases to evolve rapidly).
+\end{definition}
+
+\begin{definition}
+    \textbf{Batch runs} aggregate many sample paths to obtain mean behavior for 
+    the steady state at particular parameter values.
+\end{definition}
+
+Examining many sample paths can be helpful to determine when the process settles
+down. Of course, it is best to know that the process will settle before doing 
+this. If it doesn't, there is no steady state to analyze. This is where
+\textit{ergodicity} comes in.
+
+One can then discard the \textit{burn-in period} if one is interested only in 
+steady-state behavior, but is averaging across periods. This eliminates early
+random behavior. The number of period \textbf{must} be specified as a variable in
+a batch run.
+
+\subsection{Comparative Statistics}
+
+There are several ways to derive comparative statistics from a simulation. These 
+are needed because fully computing derivatives of steady states with respect to
+parameters is basically impossible with more than a handful of parameters.
+Perhaps the simplest involves randomly sampling the parameter space to derive a 
+simulation data set, and then regressing the steady-state variables on the
+parameters.With enough sets of parameter values, or few enough parameters, one 
+can obtain a fair representation of the linear, directional effects of the 
+parameters. 
+
+An alternative, more careful substitute method is to take data at
+regularized points in the parameter space and calculate numerical
+approximations to the partial derivatives at each of these points. If
+they all point in the same direction, one can be pretty sure of the
+sign of the comparative static.
+
+There are several problems with this approach:
+\begin{enumerate}[itemsep=-2pt]
+    \item It ignores the likelihood of interactions between parameters.
+    \item It ignored the likelihood of non-linearity and non-monotonicity.
+    \item It likely indersamples in regions of rapid change, should such exist,
+        potentially missing critical behavior.
+\end{enumerate}
+
+\subsection{Sequential parameter sweeping}
+
+An alternative method eschews sampling in favor of detailed \textit{parameter
+sweeps}. This approach produces fine-grainedcomparative statistics for a given
+variable, for any particular values of the other variables. It helps to ensure
+that the computational model is theoretically tractable.
+
+However, to perform these sweeps, one has to substantially limit the parameter
+space of the model, which is not always feasible. This is due to the
+computational workload required to perform these sweeps. Optimizing or
+parallelizing code can speed up this work with comparatively little impact on the
+final product. However, it is often easier to simplify the model itself.
+
+One way to minimize this computational issue is to build the model in stages,
+using theoretical justifications. We begin with a simple model with 1-3 parameters
+and analyze it fully by numerically computing comparative statistics. Then, we see
+if we can separate this parameter space into regions that have similar comparative
+statistics. If this is successful, we can label each region as theoretically
+distinct. We can use this technique for larger parameter spaces through its
+iterative application.
+
+\end{document}
