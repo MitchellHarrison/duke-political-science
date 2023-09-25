@@ -1,0 +1,13 @@
+10000 /* periodsEnd */
+100 /* runs */
+0 /* printPeriodData */
+1 /* printEveryNPeriods */
+0 /* dataTakingForm */
+1000 1000 100 /* N */
+.6 .6 1 /* bmean */
+.2 .4 .01 /* bstdev */
+0 150 1 /* econInt */
+0 1 .1 /* burStr */
+0 0 1 /* burFear */
+.6 .6 1 /* ext_mean */
+.2 .4 .01 /* ext_std_dev */

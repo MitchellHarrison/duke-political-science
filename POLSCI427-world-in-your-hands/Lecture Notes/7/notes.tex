@@ -1,0 +1,135 @@
+\documentclass[titlepage, 12pt, leqno]{article}
+
+% -------------------------------------------------- %
+% -------------------- PACKAGES -------------------- %
+% -------------------------------------------------- %
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{mathtools}
+\usepackage{transparent}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{parskip}
+\usepackage{bbm}
+\usepackage[margin = 1in]{geometry}
+\tcbuselibrary{breakable}
+\tcbset{breakable = true}
+
+
+% -------------------------------------------------- %
+% -------------- CUSTOM ENVIRONMENTS --------------- %
+% -------------------------------------------------- %
+\newtcolorbox{note}{colback=black!5!white,
+                          colframe=black!55!white,
+                          fonttitle=\bfseries,title=Note}
+
+\newtcolorbox{ex}{colback=blue!5!white,
+                          colframe=blue!55!white,
+                          fonttitle=\bfseries,title=Example}
+
+\newtcolorbox{definition}{colback=red!5!white,
+                          colframe=red!55!white,
+                          fonttitle=\bfseries,title=Definition}
+
+
+% -------------------------------------------------- %
+% ------------------- COMMANDS --------------------- %
+% -------------------------------------------------- %
+% Brackets, braces, etc. 
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\bigabs}[1]{\Bigl \lvert #1 \Bigr \rvert}
+\newcommand{\bigbracket}[1]{\Bigl [ #1 \Bigr ]}
+\newcommand{\bigparen}[1]{\Bigl ( #1 \Bigr )}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\bignorm}[1]{\Bigl \| #1 \Bigr \| #1}
+\newcommand{\inner}[1]{\langle #1 \rangle}
+\newcommand{\set}[1]{{ #1 }}
+
+
+% -------------------------------------------------- %
+% -------------------- SETUP ----------------------- %
+% -------------------------------------------------- %
+\title{\Huge{Lecture 7 - Social Networks cont'd}}
+\author{\large{Mitch Harrison}}
+\date{\today}   
+\begin{document}
+\setlength{\parskip}{1\baselineskip}
+\setlength{\parindent}{15pt}
+\maketitle
+\tableofcontents
+\newpage
+
+
+% -------------------------------------------------- %
+% --------------------- BODY ----------------------- %
+% -------------------------------------------------- %
+\section{Social Networks}
+
+\begin{definition}
+    A \textbf{social network} (either in person or online) is a network of social
+    connections among agents. This could be an immediate real-life friend
+    group, Facebook groups, etc.
+\end{definition}
+
+Recall that there are two types of \textit{repression}: cutting ties and removal.
+In cutting of ties, a network is broken up to sever connection between agents to
+force/prevent action. In removal, individuals are removed from the network 
+entirely, which could be anything from gag orders to political killings.
+
+There are other considerations to be made when removing agents from a network.
+There are two possible strategies: random selection or targeted selection. Random
+selection does what it says on the tin: chooses people uniformly at random to
+remove from the network. Targeted selection seeks to find the most influential
+agents in a social network and removes them in an attempt to maximize value for
+each individual removal.
+
+\subsection{Emotional responses}
+Emotional response to the removal of members of a social network (friends, family,
+etc.) can be modelled as well. For example, if a user feels:
+\begin{itemize}
+    \item anger: they may be more likely to act in rebellion against the remover
+    \item fear: the may be \textit{less} likely to act in rebellion.
+\end{itemize}
+
+\pagebreak
+\section{Group Project}
+\textbf{Question:} Which factors increase aggregate voter turnout per capita?
+\subsection{Rules}
+\begin{itemize}
+    \item If $X$\% of an agent's social network is voting for the same candidate,
+        they will turn out to vote.
+    \item If an agent consumes $Y$ hours of political news per week, they will
+        turn out.
+    \item If an agent works a full-time work day on election day, they \textbf{can
+        not} turn out to vote, regardless of other rules.
+    \item $N$\% of agents will turn out no matter what.
+    \item For every $M$\% that a candidate is leading, some agents will stop 
+        turning out because they are confident a candidate will win without them.
+    \item \texttt{True/False} if an agent is economically "comfortable", they
+        will turn out
+\end{itemize}
+
+\subsection{Inputs}
+\begin{itemize}
+    \item starting polling numbers ($M$\% chance than candidate $A$ wins)
+    \item percent $N$ of agents that will turn out no matter what
+    \item alignment to specific candidates
+    \item marketing budget
+    \item accessability to voting (polling distance, registration, etc.)
+    \item how far apart candidates are from one another
+    \item number of candidates
+    \item number of major parties
+    \item approval rating of incumbent
+\end{itemize}
+
+\subsection{Outputs}
+\begin{itemize}
+    \item voter turnout per capita
+\end{itemize}
+
+\end{document}
