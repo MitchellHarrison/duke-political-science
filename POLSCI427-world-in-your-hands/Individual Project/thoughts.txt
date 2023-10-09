@@ -1,0 +1,52 @@
+
+General notes:
+- Hubs' outward-pointing edges will vary in weight with the trust that that individual puts in them
+- Trust in others vs. the news can be judged by comparing sum weights of all inward-facing edges of an individual
+
+
+Graph parameters:
+- Proportion of red/blue nodes
+- Number of hubs
+- Number of individuals
+- Edges between non-hubs are bi-directional
+- Hubs have a starting proportion of time they share misinformation
+- Misinformation rate of each hub (0 to 1)
+- Max number of iterations
+
+
+Over time:
+- Edge weights from individuals to hubs slightly increase
+- Individuals with total weight of connection to red hubs of some threshold weaken connection to blue individuals slightly, and vice versa
+- Individuals with roughly the same proportion of weights to different color hubs grow in connection to one another
+- If an individual has a certain threshold of weight to a single color hub, connection to individual nodes of opposite color is severed with some probability
+- If a hub shares misinformation:
+    - Individuals whose edge weight to that hub is the strongest of all hubs (by some amount) will increase the weight of that hub's edge
+    - Individuals of opposite color drastically lose weight in the edge connecting them to the hub
+    - Individuals of the same color and above a weight threshold to that hub that share a connection to each other increase the weight of their connection
+    - Individuals with only one connection to any hub will show an *extreme* increase in weight to that hub
+- If an individuals total weight to all hubs is low enough, they will connect to a new hub with a constant starting rate
+- If an individual has no connection to any hub, they will select a random one of a color that has the highest weight of their connection to other individuals
+
+Stop the simulation when:
+- no edge weights change between any two individuals
+- a certain number of iterations occurs
+
+
+Model parameters:
+- Weight increase to all hubs per iteration
+- Threshold of edge weight to hub that causes a decrease in connection to opposite colors
+- Threshold of edge weight to hub that allows for increase
+- Probability of a severed connection given opposite colored individuals
+- Edge weight lost when opposite color hub exposes them to misinformation
+- Edge weight increased between individuals when they trust the same misinformation
+- Starting weight of connection to a new hub
+- Starting weight of connection to a new individual
+
+
+Expected output (hypotheses):
+- Misinformation sources will control a smaller portion of the viewer market
+- Misinformation sources will have a very dedicated, if small, cohort of viewers
+- Individuals will be cut off from those of differing color
+- An individual will have a more diverse set of social connections to the opposite color
+- Social connection between members of a misinformation "echo chamber" will be tighter than others' connections
+
